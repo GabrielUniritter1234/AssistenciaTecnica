@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fp="http://xmlns.jcp.org/jsf/core"
+      template="/pages/Inicial.xhtml">
+     
+     <ui:define name="conteudo">
+	 <title>Usuarios</title>
+
+     
+     <p:panel id="panelUsuarios" header="Lista de Usuarios">
+       <p:dataTable id="tabUsuarios" emptyMessage="Nenhum Registro" paginator="true" 
+       paginatorPosition="bottom"  var="usuario"  value="#{UsuarioView.usuarios}">
+       <p:column headerText="Cod">
+         <h:outputText value="#{usuario.codigo}" />
+        </p:column>
+       <p:column headerText="Login">
+       <h:outputText value="#{usuario.loginUsuario}" />
+        </p:column>
+       <p:column headerText="Senha">
+      	<h:outputText value="#{usuario.senhaUsuario}" />
+        </p:column>
+       <p:column headerText="Nome do Funcionario">
+       <h:outputText value="#{usuario.funcionario.nomeFuncionario}" />
+         </p:column>
+         
+        <p:column headerText="Ação" width="15%">
+          <p:button value="Editar" type="button"  class="btn bg-success" >
+            <fp:param name="codUsuario" value="#{usuario.codigo}"/>
+          </p:button>
+        </p:column>
+       </p:dataTable>
+       
+     </p:panel>
+
+</ui:define> 
+</ui:composition>
